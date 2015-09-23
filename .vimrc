@@ -1,6 +1,5 @@
 " Use Vim settings, rather then Vi settings (much better!).
 " This must be first, because it changes other options as a side effect.
-set nocompatible
 colorscheme slate
 
 " ====================== Vundle Vim Set Up ===========
@@ -10,6 +9,7 @@ filetype off                  " required
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
+
 call vundle#begin()
 " alternatively, pass a path where Vundle should install plugins
 "call vundle#begin('~/some/path/here')
@@ -18,7 +18,6 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'Bling/vim-airline'
 Plugin 'jistr/vim-nerdtree-tabs'
-Plugin 'davidhalter/jedi-vim'
 Plugin 'scrooloose/nerdtree'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -57,6 +56,7 @@ let NERDTreeDirArrows=0
 if filereadable(expand("~/.vimrc.before"))
   source ~/.vimrc.before
 endif
+
 
 " ================ General Config ====================
 
@@ -135,6 +135,16 @@ set foldnestmax=3       "deepest fold is 3 levels
 set nofoldenable        "dont fold by default
 
 " ================ Completion =======================
+if has("gui_running")
+    " C-Space seems to work under gVim on both Linux and win32
+    inoremap <C-Space> <C-n>
+else " no gui
+  if has("unix")
+    inoremap <Nul> <C-n>
+  else
+  " I have no idea of the name of Ctrl-Space elsewhere
+  endif
+endif
 
 set wildmode=list:longest
 set wildmenu                "enable ctrl-n and ctrl-p to scroll thru matches
@@ -164,5 +174,6 @@ set ignorecase      " Ignore case when searching...
 set smartcase       " ...unless we type a capital
 
 
-" ================ Vundle Plugins ==================
-
+"================ My own settings ===================="
+" <Ctrl-l> redraws the screen and removes any search highlighting.
+nnoremap <silent> <C-l> :nohl<CR><C-l>
