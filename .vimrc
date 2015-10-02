@@ -12,6 +12,8 @@ endif
 
 "====================== Vundle Vim Set Up ===========
 
+" ====================== Vundle Vim Set Up ===========
+
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
