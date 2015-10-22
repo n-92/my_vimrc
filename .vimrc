@@ -10,8 +10,6 @@ if has('gui_running')
     set background=dark
 endif
 
-"====================== Vundle Vim Set Up ===========
-
 " ====================== Vundle Vim Set Up ===========
 
 set nocompatible              " be iMproved, required
@@ -60,6 +58,8 @@ autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 
 "  Open NERDTree on gvim/macvim startup
+
+let g:NERDTreeWinPos = "right"
 let g:nerdtree_tabs_open_on_gui_startup = 1
 let NERDTreeDirArrows=0
 
@@ -189,3 +189,4 @@ set smartcase       " ...unless we type a capital
 "================ My own settings ===================="
 " <Ctrl-l> redraws the screen and removes any search highlighting.
 nnoremap <silent> <C-l> :nohl<CR><C-l>
+map <C-a> <esc>ggVG<CR>
